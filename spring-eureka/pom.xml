@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.mynotes.spring.cloud</groupId>
+	<artifactId>eureka-server-demo-root</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<name>eureka-server-demo-root</name>
+	<description>Demo project for Spring Boot</description>
+
+	 <modules>
+	      <module>eureka-server</module>
+	      <module>eureka-server-contact-us-service</module>
+	      <module>eureka-server-user-service</module>
+	  </modules>
+
+</project>
