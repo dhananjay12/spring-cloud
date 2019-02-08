@@ -1,6 +1,6 @@
 spring:
   application:
-    name: product-config-client
+    name: greeting-service-cloud
   cloud:
     config:
       uri: http://localhost:8888

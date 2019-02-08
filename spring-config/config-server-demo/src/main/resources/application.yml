@@ -7,4 +7,4 @@ spring:
       server:
         git :
           uri: https://github.com/dhananjay12/spring-cloud-config
-          searchPaths: basic-demo
+          searchPaths: app-properties
