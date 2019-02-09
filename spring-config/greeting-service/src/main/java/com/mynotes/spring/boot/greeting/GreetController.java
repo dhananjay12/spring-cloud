@@ -10,10 +10,10 @@ public class GreetController {
 
     @Value("${message.default.welcome}")
     private String welcomeMessage;
-    
+
     @Value("${message.default.goodbye}")
     private String goodBye;
-    
+
     @Autowired
     MessageProperties messageProperties;
 
@@ -21,7 +21,7 @@ public class GreetController {
     public String welcome() {
         return messageProperties.getWelcome();
     }
-    
+
     @RequestMapping("/bye")
     public String bye() {
         return goodBye;
