@@ -15,6 +15,8 @@
 	      <module>eureka-server</module>
 	      <module>eureka-server-contact-us-service</module>
 	      <module>eureka-server-user-service</module>
+	      <module>movie-service</module>
+	      <module>recommendation-service</module>
 	  </modules>
 
 </project>
