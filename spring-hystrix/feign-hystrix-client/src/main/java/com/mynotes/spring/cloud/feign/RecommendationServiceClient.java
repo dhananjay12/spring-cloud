@@ -8,12 +8,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.mynotes.spring.cloud.service.Product;
 
-
-
 @FeignClient("recommendation-service")
 public interface RecommendationServiceClient {
-	
-	@RequestMapping(value = "/getRecommendations", method = RequestMethod.GET)
-	public List<Product> getRecommendations();
+
+    @RequestMapping(value = "/recommendations", method = RequestMethod.GET)
+    public List<Product> getRecommendations();
 
 }
