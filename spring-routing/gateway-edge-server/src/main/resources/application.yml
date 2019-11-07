@@ -1,0 +1,7 @@
+spring:
+  cloud:
+    gateway:
+      default-filters:
+      - name: RequestSize
+        args:
+          maxSize: 50000000
