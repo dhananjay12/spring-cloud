@@ -1,0 +1,16 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: end-service
+          uri: http://localhost:8090
+          predicates:
+            - Path=/**
+          filters:
+            - name: RequestSize
+              args:
+                maxSize: 5000000
+      default-filters:
+        - MiddleServiceFilter
+app:
+  middle-service-url: http://localhost:8085/check
