@@ -4,4 +4,4 @@ spring:
       default-filters:
       - name: RequestSize
         args:
-          maxSize: 50000000
+          maxSize: 90000000
