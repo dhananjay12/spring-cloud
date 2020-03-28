@@ -25,14 +25,14 @@ public class MiddleServiceFilter extends AbstractGatewayFilterFactory {
     final Logger logger =
         LoggerFactory.getLogger(MiddleServiceFilter.class);
 
-    private final WebClient.Builder client;
+    private final WebClient client=WebClient.create();
 
     @Value("${app.middle-service-url:http://localhost:8085/check}")
     private String middleServiceUrl;
 
-    public MiddleServiceFilter(WebClient.Builder client) {
-        this.client = client;
-    }
+   // public MiddleServiceFilter(WebClient.Builder client) {
+//        this.client = client;
+//    }
 
     @Override
     public GatewayFilter apply(Object config) {
@@ -52,7 +52,7 @@ public class MiddleServiceFilter extends AbstractGatewayFilterFactory {
 
     private Mono<ClientResponse> callMiddleService() {
 
-        WebClient.RequestBodySpec request = client.build().method(HttpMethod.GET).uri(middleServiceUrl);
+        WebClient.RequestBodySpec request = client.method(HttpMethod.GET).uri(middleServiceUrl);
 
         logger.debug("callMiddleService");
 
@@ -67,6 +67,7 @@ public class MiddleServiceFilter extends AbstractGatewayFilterFactory {
                 List<String> headerValue = middleServiceResponse.headers().asHttpHeaders().get(headerKey);
                 modifiedRequestBuilder.header(headerKey, headerValue.toArray(new String[headerValue.size()]));
             }
+            return chain.filter(exchange.mutate().request(request).build());
 
         } else {
 
@@ -78,7 +79,7 @@ public class MiddleServiceFilter extends AbstractGatewayFilterFactory {
                 .then(Mono.error(new ResponseStatusException(HttpStatus.BAD_REQUEST, "Middle service error code")));
 
         }
-        return chain.filter(exchange);
+        //return chain.filter(exchange);
 
     }
 

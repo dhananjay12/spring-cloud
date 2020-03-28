@@ -9,22 +9,21 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 @RestController
-@RequestMapping("/file")
-public class FileController {
+@RequestMapping("/protected")
+public class ProtectedController {
 
     @PostMapping("/upload")
-    public ResponseEntity<?> uploadFile(@RequestParam("file") MultipartFile file,
+    public static ResponseEntity<?> uploadFile(@RequestParam("file") MultipartFile file,
         @RequestParam(value = "delay", required = false, defaultValue = "0") int delay) throws Exception {
 
-        System.out.println(String.join(System.getProperty("line.separator"),
-            "File Name => " + file.getOriginalFilename(),
-            "File Size => " + file.getSize() + "bytes",
-            "File Content Type => " + file.getContentType()));
+         System.out.println(String.join(System.getProperty("line.separator"),
+            "Protected File Name => " + file.getOriginalFilename(),
+            "Protected File Size => " + file.getSize() + "bytes",
+            "Protected File Content Type => " + file.getContentType()));
 
         TimeUnit.MILLISECONDS.sleep(delay);
 
         return ResponseEntity.ok(file.getName() + " uploaded");
     }
-
 
 }

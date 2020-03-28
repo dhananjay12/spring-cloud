@@ -14,7 +14,7 @@ public class GatewayWithFiltersApplication {
         SpringApplication.run(GatewayWithFiltersApplication.class, args);
     }
 
-    @Bean
+    //@Bean
     WebClient.Builder webClient() {
         return webClientBuilder();
         //return WebClient.builder();

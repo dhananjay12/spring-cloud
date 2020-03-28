@@ -3,7 +3,7 @@ spring:
     gateway:
       routes:
         - id: end-service
-          uri: http://localhost:8090
+          uri: http://localhost:9090
           predicates:
             - Path=/**
           filters:

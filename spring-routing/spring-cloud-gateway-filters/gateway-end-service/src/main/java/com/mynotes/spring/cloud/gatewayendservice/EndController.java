@@ -1,11 +1,16 @@
 package com.mynotes.spring.cloud.gatewayendservice;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Enumeration;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +21,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 public class EndController {
+
+   // @Value("${app.omitHeaders:}")
+    private Set<String> omitHeaders = new HashSet<>(Arrays.asList("Content-Length", "Content-Type", "Transfer-Encoding"));
 
     @RequestMapping(value = {"/headers"})
     @ResponseBody
@@ -59,4 +67,7 @@ public class EndController {
         return ResponseEntity.ok(file.getName() + " uploaded");
     }
 
+    public Set<String> getOmitHeaders() {
+        return omitHeaders;
+    }
 }
